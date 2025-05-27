@@ -1,0 +1,53 @@
+
+a:link {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #5c6bc0; /* softer purple tone for visited */
+}
+
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+a:active {
+  color: #d84315;
+}
+
+.nav-menu {
+  list-style-type: none; 
+  padding: 0;
+  margin: 20px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.nav-menu li {
+  margin: 0;
+  padding: 10px 15px;
+  background-color: #e3f2fd;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.nav-menu li:hover {
+  background-color: #bbdefb;
+}
+
+.checklist {
+  list-style-type: square;
+  list-style-position: inside;
+  margin: 30px auto;
+  padding: 0;
+  width: 80%;
+}
+
+.checklist li {
+  padding: 8px 0;
+  font-size: 1rem;
+  color: #333;
+}
