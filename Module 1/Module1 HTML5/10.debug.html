@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Debugging Practice</title>
+  <style>
+    #box {
+      width: 150px;
+      height: 150px;
+      background-color: coral;
+      margin: 2em auto;
+      text-align: center;
+      line-height: 150px;
+      font-weight: bold;
+      color: white;
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="box">Click me</div>
+
+  <script>
+    const box = document.getElementById('box');
+
+    box.addEventListener('click', () => {
+      console.log('Box clicked!');
+
+      let counter = 0;
+      for(let i = 0; i < 5; i++) {
+        counter += i;
+        debugger;  // Pause here to inspect 'counter' and 'i'
+      }
+
+      box.textContent = `Count: ${counter}`;
+    });
+  </script>
+
+</body>
+</html>

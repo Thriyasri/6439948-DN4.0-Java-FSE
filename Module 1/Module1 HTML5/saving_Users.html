@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Save User Preferences</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2em;
+      max-width: 400px;
+      margin: auto;
+      background: #f9f9f9;
+    }
+
+    label, select, button {
+      display: block;
+      width: 100%;
+      margin-top: 1em;
+    }
+
+    select, button {
+      padding: 0.6em;
+      font-size: 1em;
+    }
+
+    button {
+      margin-top: 2em;
+      background-color: #d9534f;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #c9302c;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Choose Your Preferred Event</h2>
+
+  <label for="eventType">Event Type:</label>
+  <select id="eventType">
+    <option value="">-- Select an Event --</option>
+    <option value="cleanup">Neighborhood Cleanup</option>
+    <option value="music">Music Night</option>
+    <option value="food">Food Festival</option>
+    <option value="run">Charity Run</option>
+  </select>
+
+  <button id="clearPrefsBtn">Clear Preferences</button>
+
+  <script>
+    const eventSelect = document.getElementById('eventType');
+    const clearBtn = document.getElementById('clearPrefsBtn');
+
+    // Load saved preference on page load
+    window.addEventListener('load', () => {
+      const savedEvent = localStorage.getItem('preferredEvent');
+      if (savedEvent) {
+        eventSelect.value = savedEvent;
+      }
+    });
+
+    // Save preference when changed
+    eventSelect.addEventListener('change', () => {
+      const selected = eventSelect.value;
+      if (selected) {
+        localStorage.setItem('preferredEvent', selected);
+        sessionStorage.setItem('preferredEventSession', selected);
+      } else {
+        // If user selects empty option, remove preferences
+        localStorage.removeItem('preferredEvent');
+        sessionStorage.removeItem('preferredEventSession');
+      }
+    });
+
+    // Clear preferences on button click
+    clearBtn.addEventListener('click', () => {
+      localStorage.removeItem('preferredEvent');
+      sessionStorage.removeItem('preferredEventSession');
+      eventSelect.value = '';
+      alert('Preferences cleared!');
+    });
+  </script>
+
+</body>
+</html>
